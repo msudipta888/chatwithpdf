@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  :root {
+    --background: 270 30% 10%;
+    --foreground: 270 10% 92%;
+
+    --card: 270 30% 15%;
+    --card-foreground: 270 10% 92%;
+
+    --popover: 270 30% 15%;
+    --popover-foreground: 270 10% 92%;
+
+    --primary: 270 70% 70%;
+    --primary-foreground: 270 10% 10%;
+
+    --secondary: 30 70% 70%;
+    --secondary-foreground: 270 10% 10%;
+
+    --muted: 270 20% 25%;
+    --muted-foreground: 270 10% 70%;
+
+    --accent: 140 70% 50%;
+    --accent-foreground: 270 10% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 270 10% 92%;
+
+    --border: 270 30% 30%;
+    --input: 270 30% 20%;
+    --ring: 270 70% 70%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 270 30% 12%;
+    --sidebar-foreground: 270 10% 92%;
+    --sidebar-primary: 270 70% 70%;
+    --sidebar-primary-foreground: 270 10% 10%;
+    --sidebar-accent: 270 30% 20%;
+    --sidebar-accent-foreground: 270 10% 92%;
+    --sidebar-border: 270 30% 25%;
+    --sidebar-ring: 270 70% 70%;
+  }
+
+}
+/* 2. Base styles */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Space Mono", monospace;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Press Start 2P", cursive;
+}
+
+/* 3. Utility replacements */
+.bg-background {
+  background-color: hsl(var(--background));
+}
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+.bg-card {
+  background-color: hsl(var(--card));
+}
+.text-card-foreground {
+  color: hsl(var(--card-foreground));
+}
+.bg-popover {
+  background-color: hsl(var(--popover));
+}
+.text-popover-foreground {
+  color: hsl(var(--popover-foreground));
+}
+.bg-primary {
+  background-color: hsl(var(--primary));
+  transition: background-color 0.2s;
+}
+.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
+}
+.bg-secondary {
+  background-color: hsl(var(--secondary));
+}
+.text-secondary-foreground {
+  color: hsl(var(--secondary-foreground));
+}
+.bg-muted {
+  background-color: hsl(var(--muted));
+}
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+.bg-accent {
+  background-color: hsl(var(--accent));
+}
+.text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+.bg-destructive {
+  background-color: hsl(var(--destructive));
+}
+.text-destructive-foreground {
+  color: hsl(var(--destructive-foreground));
+}
+.border {
+  border-width: 1px;
+  border-style: solid;
+  border-color: hsl(var(--border));
+}
+.rounded-lg {
+  border-radius: var(--radius);
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
+}
+.font-mono {
+  font-family: monospace;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.font-bold {
+  font-weight: 700;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+.transition-all {
+  transition: all 0.2s ease;
+}
+.duration-200 {
+  transition-duration: 200ms;
+}
+.hover\:-shadow-lg:hover {
+  box-shadow: 0 0 15px rgba(155, 135, 245, 0.7);
+}
+.hover\:-translate-y-0\.5:hover {
+  transform: translateY(-0.125rem);
+}
+.active\:translate-y-0:active {
+  transform: translateY(0);
+}
+
+/* 4. Component classes */
+.retro-container {
+  position: relative;
+  padding: 1.5rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--sidebar-border));
+  background-color: hsl(var(--card));
+  overflow: hidden;
+}
+
+.retro-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/path/to/noise-pattern.png");
+  background-repeat: repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.terminal-text {
+  font-family: "VT323", monospace;
+  color: hsl(var(--accent));
+}
+
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-screen::before,
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.crt-screen::before {
+  background-image: url("/path/to/noise-pattern.png");
+  opacity: 0.05;
+}
+
+.crt-screen::after {
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+  opacity: 0.3;
+  z-index: 20;
+}
+
+.scan-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 30;
+  pointer-events: none;
+}
+
+.retro-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--secondary))
+  );
+  border: 2px solid hsla(var(--primary), 0.3);
+  transition: all 0.2s ease;
+}
+.retro-button:hover {
+  box-shadow: 0 0 15px rgba(155, 135, 245, 0.7);
+  transform: translateY(-0.125rem);
+}
+.retro-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.retro-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.retro-button:hover::before {
+  opacity: 0.3;
+}
+
+.retro-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  background-color: hsla(var(--background), 0.5);
+  border: 2px solid hsla(var(--primary), 0.5);
+  outline: none;
+}
+.retro-input:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 1px hsl(var(--accent));
+}
+
+.typing-animation {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid hsl(var(--accent));
+  animation: typing 2s steps(40) forwards;
+}
+.typing-cursor {
+  border-right: 4px solid currentColor;
+  animation: blink-cursor 0.8s steps(1) infinite;
+}
+
+.card-with-hover {
+  transition: all 0.2s ease;
+}
+.card-with-hover:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0 20px rgba(155, 135, 245, 0.4);
+}
+
+.chat-message {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: var(--radius);
+  max-width: 85%;
+}
+.chat-message-user {
+  background-color: hsla(var(--primary), 0.4);
+  margin-left: auto;
+  text-align: right;
+}
+.chat-message-bot {
+  background-color: hsla(var(--muted), 0.7);
+  margin-right: auto;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #704b9d #1a1a1a;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #704b9d;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--accent));
+}
+
+/* 5. Animations */
+.neon-pulse-animation {
+  animation: neon-pulse 1.5s ease-in-out infinite;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-cursor {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes rainbow-border {
+  0% {
+    border-color: #ff0000;
+  }
+  33% {
+    border-color: #00ff00;
+  }
+  66% {
+    border-color: #0000ff;
+  }
+  100% {
+    border-color: #ff0000;
+  }
+}
+
+@keyframes neon-pulse {
+  0% { box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; }
+  50% { box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; }
+  100% { box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; }
+}
+.glitch-effect {
+  animation: glitch 0.3s ease-in-out infinite paused;
+}
+.glitch-effect:hover {
+  animation-play-state: running;
+}
+.glow-text {
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+}
+
+/* 6. Responsive tweaks */
+@media (max-width: 768px) {
+  .retro-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: normal;
+  }
+}
+
+
+
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+
+}
+
+
+

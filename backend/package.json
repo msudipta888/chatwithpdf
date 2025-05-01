@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:app": "nodemon index.js",
+    "start:worker": "nodemon worker.js",
+    "start": "concurrently \"npm run start:app\" \"npm run start:worker\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@bytescale/sdk": "^3.51.0",
+    "@google/genai": "^0.10.0",
+    "@google/generative-ai": "^0.24.0",
+    "@langchain/community": "^0.3.41",
+    "@langchain/core": "^0.3.46",
+    "@langchain/google-genai": "^0.2.4",
+    "@langchain/openai": "^0.5.6",
+    "@langchain/qdrant": "^0.1.2",
+    "@langchain/textsplitters": "^0.1.0",
+    "@qdrant/js-client-rest": "^1.14.0",
+    "bullmq": "^5.49.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "firebase": "^11.6.1",
+    "ioredis": "^5.6.1",
+    "langchain": "^0.3.23",
+    "mongoose": "^8.14.0",
+    "multer": "^1.4.5-lts.2",
+    "nodemon": "^3.1.9",
+    "openai": "^4.96.0",
+    "pdf-parse": "^1.1.1",
+    "redis": "^4.7.0",
+    "undici": "^7.8.0"
+  }
+}
