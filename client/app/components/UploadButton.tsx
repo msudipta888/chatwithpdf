@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { Upload } from "lucide-react";
 import RetroButton from "./RetroButton";
 import { toast } from "sonner";
@@ -53,12 +53,15 @@ export default function UploadButton({
 
       toast.success("File uploaded successfully");
       onFileSelected(file);
-    } catch (error: any) {
-      if (error.name === "AbortError") {
-        toast.error("Upload timed out. Please try again.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        if (error.name === "AbortError") {
+          toast.error("Upload timed out. Please try again.");
+        } else {
+          toast.error("File upload failed");
+        }
       } else {
-        console.error(error);
-        toast.error("File upload failed");
+        toast.error("An unknown error occurred");
       }
     } finally {
       setIsLoading(false);

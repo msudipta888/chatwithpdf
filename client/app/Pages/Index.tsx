@@ -36,7 +36,7 @@ const Index = () => {
                 <span className=" glow-text">PDFs</span>
                 <span className="text-white"> Like</span>
                 <br />
-                <span className="text-white">It's </span>
+                <span className="text-white">It&apos;s </span>
                 <span className="text-pink-500">1985</span>
                 <span className="text-white"> from the Future</span>
               </h1>

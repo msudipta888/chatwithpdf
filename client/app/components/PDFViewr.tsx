@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { FileText, Download, ZoomIn, ZoomOut } from 'lucide-react';
 import RetroButton from './RetroButton';
 

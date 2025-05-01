@@ -1,6 +1,5 @@
 "use client";
 import {  Route, Routes, } from 'react-router-dom';
-import HomeComponent from './Home'
 import Index from './Pages/Index';
 import Chat from './Pages/Chat';
 import { PDFProvider } from './context/PDFContext';

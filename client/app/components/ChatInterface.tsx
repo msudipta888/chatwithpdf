@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, Send, Book, ChevronRight } from "lucide-react";
+import { MessageCircle, Send, Book } from "lucide-react";
 import RetroButton from "./RetroButton";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
