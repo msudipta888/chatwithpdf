@@ -86,5 +86,5 @@ app.post('/search/pdf', async (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 app.listen(PORT);
