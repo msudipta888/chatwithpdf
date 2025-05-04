@@ -43,9 +43,6 @@ app.post('/upload/pdf', async (req, res) => {
   try {
     const { filePath, fileUrl, originalFileName, size } = req.body;
     const { id: userId } = req.query;
-
-    await bullq.add('pdf-job', { fileUrl, userId });
-
     const exists = await FileModel.findOne({ fileName: originalFileName });
     if (exists) {
       return res.json({ status: 'success', message: 'File already exists.' });
@@ -58,6 +55,7 @@ app.post('/upload/pdf', async (req, res) => {
       FileSize: size
     });
 
+    await bullq.add('pdf-job', { fileUrl, userId });
     res.json({ status: 'success', message: 'File queued for processing.' });
   } catch (error) {
     res.status(500).json({ status: 'error', message: error.message });
