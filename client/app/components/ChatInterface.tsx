@@ -55,7 +55,7 @@ const ChatInterface = ({ pdfFile,id }: ChatInterfaceProps) => {
   const generateResponse = async (question: string) => {
     try {
       setIsTyping(true);
-      const response = await fetch(`http://localhost:8000/search/pdf?id=${id}`, {
+      const response = await fetch(`https://chatwithpdf-tpkr.onrender.com/search/pdf?id=${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: question }),

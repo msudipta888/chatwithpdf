@@ -39,7 +39,7 @@ export default function UploadButton({
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 30_000);
 
-      const res = await fetch(`http://localhost:8000/upload/pdf?id=${id}`, {
+      const res = await fetch(`https://chatwithpdf-tpkr.onrender.com/upload/pdf?id=${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         signal: controller.signal,
