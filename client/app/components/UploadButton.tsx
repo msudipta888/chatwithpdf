@@ -84,8 +84,10 @@ export default function UploadButton({
       await uploadPdfToServer(
         { filePath, fileUrl, originalFileName, size },file
       );
-    } catch (error) {
-      toast.error("Error uploading file");
+    } catch (error:unknown) {
+      if(error instanceof Error){
+        toast.error("Error uploading file:");
+      }
       setIsLoading(false);
     }
   };
