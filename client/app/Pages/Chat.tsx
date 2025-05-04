@@ -23,7 +23,6 @@ const Chat = () => {
   }
   useEffect(()=>{
     const fileId = uuidv4();
-    console.log('id',fileId)
     setId(fileId);
   },[])
  

@@ -1,10 +1,11 @@
 const FileModel = require('./model/File')
 const { Worker  } = require('bullmq');
-const IORedis = require('ioredis');
-const ingestPdf = require('pdfWorker/ingest');
-const { Queue } = require('bullmq');
-const queue = new Queue('pdf-queue', { connection: { host: 'localhost', port: 6379 } });
-
+const ingestPdf = require('./pdfWorker/ingest');
+require('dotenv').config()
+const redisUrl = process.env.REDIS_URL;
+if (!redisUrl) {
+  process.exit(1);
+}
 const worker = new Worker(
   'pdf-queue',
   async job => {
@@ -13,13 +14,13 @@ const worker = new Worker(
   
   },
   { connection:{
-    host:"localhost",
-    port:6379
+   url:redisUrl
   }, concurrency: 1 }   
 );
 
 worker.on("failed", (job, err) => {
   console.error(`Job ${job.id} failed:`, err);
-  
+
+
 });
   

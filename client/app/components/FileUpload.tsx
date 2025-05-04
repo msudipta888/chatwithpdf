@@ -16,9 +16,6 @@ const FileUpload = () => {
             method: 'POST',
             body: formData,
         }).then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-          console.log('file uploaded')
         }
       }
     });

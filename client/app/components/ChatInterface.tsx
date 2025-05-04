@@ -74,6 +74,7 @@ const ChatInterface = ({ pdfFile,id }: ChatInterfaceProps) => {
       toast("Response Generated", {
         description: "AI has processed your question",
       });
+      console.log('mes:',messages)
     } catch (error) {
       console.error("Error generating response:", error);
       toast.error("Error generating response. Please try again.");

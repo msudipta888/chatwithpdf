@@ -85,7 +85,6 @@ export default function UploadButton({
         { filePath, fileUrl, originalFileName, size },file
       );
     } catch (error) {
-      console.error(error);
       toast.error("Error uploading file");
       setIsLoading(false);
     }
